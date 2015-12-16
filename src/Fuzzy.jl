@@ -19,7 +19,7 @@ const global tconorm = max
 ######################
 # Type 1
 include("./Type1/Type1.jl")
-include("./Type1/Operations.jl")
+include("./Type1/MFOperations.jl")
 
 ######################
 # Type 2
