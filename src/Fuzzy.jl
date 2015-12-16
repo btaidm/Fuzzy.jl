@@ -12,10 +12,14 @@ Defines the Abstract Type for Fuzzy Sets
 abstract AbstractFuzzySet
 export AbstractFuzzySet
 
+
+const global tnorm = min
+const global tconorm = max
+
 ######################
 # Type 1
 include("./Type1/Type1.jl")
-
+include("./Type1/Operations.jl")
 
 ######################
 # Type 2
