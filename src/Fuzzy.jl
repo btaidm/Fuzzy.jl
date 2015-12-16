@@ -24,6 +24,7 @@ include("./Type1/MFOperations.jl")
 ######################
 # Type 2
 include("./Type2/Type2.jl")
+include("./Type2/IT2Operations.jl")
 
 
 
