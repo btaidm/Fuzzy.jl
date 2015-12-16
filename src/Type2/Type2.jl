@@ -5,8 +5,12 @@ abstract Type2FuzzySet <: AbstractFuzzySet
 abstract IntervalType2FuzzySet <: Type2FuzzySet
 import Base: getindex
 
-getindex(mf::IntervalType2FuzzySet, range) = [mf[value]::Tuple{Float64,Float64} for value in range]
-getindex(mf::IntervalType2FuzzySet, values...) = [mf[value]::Tuple{Float64,Float64} for value in values]
+function getindex(mf::IntervalType2FuzzySet, range)
+	out = hcat([[mf[value]::Tuple{Float64,Float64}...] for value in range]...)
+	(out[1,:],out[2,:])
+end
+
+getindex(mf::IntervalType2FuzzySet, values...) = getindex(mf,[values...])
 
 export getindex
 
