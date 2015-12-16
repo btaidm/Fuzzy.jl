@@ -73,13 +73,27 @@ immutable GenericMF <: Membershipfunction
 	mf::Function
 end
 export GenericMF
-typealias GaussMF GenericMF
-GaussMF(mu,sigma) = GenericMF(x -> exp(-(x-mu).^2/(2.*sigma.^2)))
-export GaussMF
 
 import Base: getindex
 function getindex(gmf::GenericMF, value::Real)
 	gmf.mf(value)
+end
+export getindex
+
+immutable GaussMF <: Membershipfunction
+	mu::Float64
+	sigma::Float64
+end
+export GaussMF
+immutable GaussMF <: Membershipfunction
+	mu::Float64
+	sigma::Float64
+end
+export GaussMF
+
+import Base: getindex
+function getindex(gmf::GaussMF, value::Real)
+	GenericMF(x -> exp(-(x-gmf.mu).^2/(2.*gmf.sigma.^2)))[value]
 end
 export getindex
 
